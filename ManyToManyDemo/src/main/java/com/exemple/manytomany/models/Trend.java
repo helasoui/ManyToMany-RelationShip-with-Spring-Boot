@@ -28,7 +28,7 @@ public class Trend {
 	private String name;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trends")
-	private Set<Post> posts =new HashSet<>() ;
+	private Set<Post> posts = new HashSet<>();
 
 	public Trend() {
 

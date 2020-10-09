@@ -61,7 +61,7 @@ public class Post {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "post_tags", joinColumns = { @JoinColumn(name = "post_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "tag_id") })
-	private Set<Trend> trends  =new HashSet<>();//unordered collection alors que List ordered colection
+	private Set<Trend> trends = new HashSet<>();// unordered collection alors que List ordered colection
 
 	public Post() {
 
