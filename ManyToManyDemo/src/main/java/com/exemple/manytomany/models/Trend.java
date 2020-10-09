@@ -3,7 +3,9 @@ package com.exemple.manytomany.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import org.hibernate.annotations.NaturalId;
 
 @Entity
@@ -26,7 +27,7 @@ public class Trend {
 	@NaturalId
 	private String name;
 
-	@ManyToMany(mappedBy = "trends")
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trends")
 	private Set<Post> posts =new HashSet<>() ;
 
 	public Trend() {
