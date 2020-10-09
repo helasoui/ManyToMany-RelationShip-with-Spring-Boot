@@ -63,7 +63,7 @@ public class Post {
     @JoinTable(name = "post_tags",
             joinColumns = { @JoinColumn(name = "post_id") },
             inverseJoinColumns = { @JoinColumn(name = "tag_id") })
-    private Set<Tag> tags;//unordered collection alors que List ordered colection
+    private Set<Trend> trends;//unordered collection alors que List ordered colection
 
 
     public Post() {
@@ -98,14 +98,17 @@ public class Post {
 	}
 
 
-	public Set<Tag> getTags() {
-		return tags;
+	public Set<Trend> getTrends() {
+		return trends;
 	}
 
 
-	public void setTags(Set<Tag> tags) {
-		this.tags = tags;
+	public void setTrends(Set<Trend> trends) {
+		this.trends = trends;
 	}
+
+
+	
 
     // Getters and Setters (Omitted for brevity)
 }

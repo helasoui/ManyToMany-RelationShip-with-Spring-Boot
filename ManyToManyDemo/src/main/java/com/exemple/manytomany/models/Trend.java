@@ -18,7 +18,7 @@ import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "tags")
-public class Tag {
+public class Trend {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,14 +28,14 @@ public class Tag {
 	@NaturalId
 	private String name;
 
-	@ManyToMany(mappedBy = "tags")
+	@ManyToMany(mappedBy = "trends")
 	private Set<Post> posts;
 
-	public Tag() {
+	public Trend() {
 
 	}
 
-	public Tag(String name) {
+	public Trend(String name) {
 		this.name = name;
 	}
 
