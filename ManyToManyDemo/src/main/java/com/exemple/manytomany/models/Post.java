@@ -26,6 +26,11 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "posts")
 public class Post {
+	/*List and ArrayList are the members of Collection framework. 
+	 * List is a collection of elements in a sequence where each element is
+	 *  an object and elements are accessed by there position (index). ... 
+	 *  The primary difference between List and ArrayList is that List is an 
+	 *  interface and ArrayList is a class.*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -54,26 +59,53 @@ public class Post {
     private Date lastUpdatedAt = new Date();
 
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                CascadeType.PERSIST,
-                CascadeType.MERGE
-            })
+    @ManyToMany
     @JoinTable(name = "post_tags",
             joinColumns = { @JoinColumn(name = "post_id") },
             inverseJoinColumns = { @JoinColumn(name = "tag_id") })
-    private Set<Tag> tags = new HashSet<>();
+    private Set<Tag> tags;//unordered collection alors que List ordered colection
 
 
     public Post() {
 
     }
+    
 
     public Post(String title, String description, String content) {
         this.title = title;
         this.description = description;
         this.content = content;
     }
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
 
     // Getters and Setters (Omitted for brevity)
 }
